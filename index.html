@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inceba Funeral Palour | Serving KwaZulu-Natal & Eastern Cape</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --red: #8b1a1a;
+    --red-dark: #6b1010;
+    --red-light: #a52020;
+    --gold: #c9a84c;
+    --dark: #1a1a1a;
+    --darker: #0f0f0f;
+    --cream: #f8f5f0;
+    --white: #ffffff;
+    --border: #e8e0d8;
+    --muted: #777;
+    --text: #2a2a2a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--darker);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    border-bottom: 3px solid var(--red);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--red) !important; color: #fff !important; padding: 8px 20px; border-radius: 2px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--darker);
+    display: flex; align-items: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -60deg, transparent, transparent 60px,
+      rgba(139,26,26,0.03) 60px, rgba(139,26,26,0.03) 61px
+    );
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--red-dark), var(--gold), var(--red-dark));
+  }
+
+  .hero-content { max-width: 680px; animation: fadeUp 0.9s ease both; position: relative; z-index: 1; }
+
+  .hero-reg {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(139,26,26,0.2);
+    border: 1px solid rgba(139,26,26,0.4);
+    border-radius: 2px;
+    padding: 6px 16px;
+    margin-bottom: 2rem;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #e88888;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 6vw, 68px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--gold); }
+
+  .hero-tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .hero p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.5);
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--red);
+    color: #fff;
+    padding: 14px 32px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--red-light); }
+
+  .btn-secondary {
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    padding: 14px 32px;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: rgba(201,168,76,0.08); }
+
+  .hero-features {
+    display: flex; gap: 2rem; flex-wrap: wrap;
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+
+  .hero-feature {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.5px;
+  }
+
+  .hero-feature::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ABOUT */
+  .about { padding: 100px 5%; background: var(--cream); }
+  .about-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+
+  .section-tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  .about h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .about p { color: var(--muted); line-height: 1.9; margin-bottom: 1rem; font-size: 15px; }
+
+  .about-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--red);
+    border-left: 3px solid var(--gold);
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+    line-height: 1.7;
+  }
+
+  .about-visual {
+    background: var(--darker);
+    border-radius: 4px;
+    height: 420px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-top: 4px solid var(--red);
+  }
+
+  .about-visual-inner { text-align: center; z-index: 1; }
+
+  .cross-icon {
+    width: 60px; height: 60px;
+    position: relative;
+    margin: 0 auto 1.5rem;
+    opacity: 0.3;
+  }
+
+  .cross-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px; height: 60px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  .cross-icon::after {
+    content: '';
+    position: absolute;
+    top: 30%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px; height: 8px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  .about-visual-inner p { color: rgba(255,255,255,0.2); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+
+  /* SERVICES */
+  .services { padding: 100px 5%; }
+  .services-inner { max-width: 1200px; margin: 0 auto; }
+  .services-header { text-align: center; margin-bottom: 4rem; }
+  .services-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    margin-bottom: 1rem;
+  }
+  .services-header p { color: var(--muted); font-size: 15px; max-width: 500px; margin: 0 auto; line-height: 1.7; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+
+  .service-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem;
+    border-top: 3px solid var(--red);
+    transition: box-shadow 0.2s;
+  }
+
+  .service-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin-bottom: 0.75rem;
+    color: var(--dark);
+  }
+
+  .service-card p { font-size: 13px; color: var(--muted); line-height: 1.8; }
+
+  /* PACKAGES */
+  .packages { padding: 100px 5%; background: var(--darker); }
+  .packages-inner { max-width: 1200px; margin: 0 auto; }
+  .packages-header { text-align: center; margin-bottom: 4rem; }
+  .packages-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+  .packages-header p { color: rgba(255,255,255,0.35); font-size: 14px; }
+
+  .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+
+  .package-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    padding: 2rem 1.5rem;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .package-card:hover { background: rgba(255,255,255,0.07); }
+
+  .package-card.featured {
+    background: var(--red);
+    border-color: var(--red);
+  }
+
+  .package-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .package-price {
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: block;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .package-card.featured .package-price { color: #fff; }
+
+  .package-features { list-style: none; margin-bottom: 1.5rem; }
+
+  .package-features li {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .package-card.featured .package-features li { color: rgba(255,255,255,0.85); border-bottom-color: rgba(255,255,255,0.12); }
+  .package-features li:last-child { border-bottom: none; }
+  .package-features li::before { content: '✓'; color: var(--gold); font-size: 11px; flex-shrink: 0; }
+  .package-card.featured .package-features li::before { color: #fff; }
+
+  .package-btn {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .package-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .package-card.featured .package-btn { background: #fff; color: var(--red); border-color: #fff; font-weight: 500; }
+
+  .package-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* BRANCHES */
+  .branches { padding: 100px 5%; background: var(--cream); }
+  .branches-inner { max-width: 1200px; margin: 0 auto; }
+  .branches-header { margin-bottom: 3rem; }
+  .branches-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 42px); margin-bottom: 0.5rem; }
+
+  .branches-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+
+  .branch-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--red);
+  }
+
+  .branch-name { font-weight: 500; font-size: 14px; color: var(--dark); margin-bottom: 4px; }
+  .branch-location { font-size: 12px; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 6px; text-transform: uppercase; }
+  .branch-phone { font-size: 13px; color: var(--red); font-weight: 400; }
+
+  /* CONTACT */
+  .contact { padding: 100px 5%; }
+  .contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+  .contact h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 42px); margin-bottom: 1rem; }
+  .contact > .contact-inner > div > p { color: var(--muted); font-size: 15px; line-height: 1.8; margin-bottom: 2.5rem; }
+
+  .contact-detail { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; }
+
+  .contact-icon {
+    width: 40px; height: 40px;
+    background: var(--red);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .contact-detail-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; font-weight: 500; }
+  .contact-detail-value { font-size: 14px; color: var(--text); }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--red); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 14px 32px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .form-submit:hover { background: var(--red-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--darker);
+    padding: 2.5rem 5%;
+    border-top: 3px solid var(--red);
+  }
+
+  .footer-top {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    flex-wrap: wrap; gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; color: #fff; margin-bottom: 0.5rem; }
+  .footer-logo span { color: var(--gold); }
+  .footer-reg { font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 1px; }
+  .footer-tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13px; color: rgba(255,255,255,0.25); margin-top: 6px; }
+
+  .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-bottom p { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+  /* SIYIO LABS */
+  .built-by {
+    background: #0a0a0a;
+    padding: 1.25rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem; position: relative;
+  }
+  .built-by::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #00e5a0, #00b8ff, #7b5ea7); }
+  .built-by-brand { display: flex; flex-direction: column; gap: 2px; }
+  .built-by-name { font-size: 15px; font-weight: 500; color: #fff; }
+  .built-by-title { font-size: 10px; color: #00e5a0; letter-spacing: 2px; text-transform: uppercase; }
+  .built-by-contacts { display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; }
+  .built-by-item { display: flex; flex-direction: column; gap: 1px; }
+  .built-by-label { font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 1.5px; text-transform: uppercase; }
+  .built-by-value { font-size: 12px; color: rgba(255,255,255,0.7); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .about-visual { height: 200px; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-features { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Inceba <span>Funeral Palour</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#branches">Branches</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-reg">Reg No: 2011/026197/23</span>
+    <span class="hero-tag">Funeral Services · KwaZulu-Natal & Eastern Cape</span>
+    <h1>Caring for Your <em>Loved Ones</em> with Dignity</h1>
+    <span class="hero-tagline">"Phakathi kokudliwa kobomi sikwasekufeni"</span>
+    <p>Inceba Funeral Palour provides compassionate, professional funeral services across multiple branches in KwaZulu-Natal and the Eastern Cape. We are here for your family in your time of need.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Contact Us Now</a>
+      <a href="#packages" class="btn-secondary">View Packages</a>
+    </div>
+    <div class="hero-features">
+      <div class="hero-feature">Repatriation Service</div>
+      <div class="hero-feature">No Age Limit Plans</div>
+      <div class="hero-feature">Debit Order Available</div>
+      <div class="hero-feature">Accident — No Waiting Period</div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div>
+      <span class="section-tag">Who We Are</span>
+      <h2>A Trusted Name in Funeral Services</h2>
+      <div class="about-quote">"Phakathi kokudliwa kobomi sikwasekufeni"</div>
+      <p>Inceba Funeral Palour has been serving families across KwaZulu-Natal and the Eastern Cape since 2011. We understand that losing a loved one is one of life's most difficult moments.</p>
+      <p>Led by Director Lusindiso Mhlwatika, our dedicated team of branch managers ensures that every family receives dignified, compassionate care — no matter where they are.</p>
+      <p>From repatriation services to décor for any event, we handle every detail with professionalism and heart.</p>
+    </div>
+    <div class="about-visual">
+      <div class="about-visual-inner">
+        <div class="cross-icon"></div>
+        <p>Inceba Funeral Palour · Est. 2011</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <span class="section-tag">What We Offer</span>
+      <h2>Our Services</h2>
+      <p>Comprehensive funeral and support services for families across KwaZulu-Natal and the Eastern Cape.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Repatriation Service</h3>
+        <p>We handle the full repatriation process — ensuring your loved one is transported with care and dignity, wherever they need to go.</p>
+      </div>
+      <div class="service-card">
+        <h3>Funeral Cover Plans</h3>
+        <p>Affordable funeral cover plans with no age limit. 4-month waiting period applies, with no waiting period for accidental death.</p>
+      </div>
+      <div class="service-card">
+        <h3>Décor for Any Event</h3>
+        <p>Professional event décor services for funeral services, memorial ceremonies, and related gatherings.</p>
+      </div>
+      <div class="service-card">
+        <h3>Debit Order Facility</h3>
+        <p>Flexible debit order payment options available, making it easy to keep your funeral cover active and up to date.</p>
+      </div>
+      <div class="service-card">
+        <h3>Cash Back Benefits</h3>
+        <p>Selected plans include cash back benefits for main members and dependants to assist with funeral-related expenses.</p>
+      </div>
+      <div class="service-card">
+        <h3>Full Funeral Management</h3>
+        <p>Caskets, tents, chairs, programmes, sound systems, fresh flowers, grave service, and audio obituaries — all handled for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="packages" id="packages">
+  <div class="packages-inner">
+    <div class="packages-header">
+      <span class="section-tag">Funeral Cover</span>
+      <h2>Our Packages</h2>
+      <p style="color:rgba(255,255,255,0.35);font-size:14px;">Affordable cover for every family — no age limit on all plans.</p>
+    </div>
+    <div class="packages-grid">
+
+      <div class="package-card">
+        <div class="package-note">Pension Special</div>
+        <div class="package-name">Single Policy</div>
+        <span class="package-price">R75/mo</span>
+        <ul class="package-features">
+          <li>Repatriation</li>
+          <li>2 Poles Tent</li>
+          <li>100 Chairs</li>
+          <li>Open Face Casket</li>
+          <li>R1,500 Cash Back</li>
+          <li>Storage & Delivery</li>
+          <li>50 Programmes</li>
+          <li>Grave Service</li>
+        </ul>
+        <a href="#contact" class="package-btn">Enquire</a>
+      </div>
+
+      <div class="package-card">
+        <div class="package-note">Silver Package</div>
+        <div class="package-name">Single Parent + 6 Kids</div>
+        <span class="package-price">R99/mo</span>
+        <ul class="package-features">
+          <li>Repatriation</li>
+          <li>2 Poles Tent</li>
+          <li>100 Chairs</li>
+          <li>Open Face Casket</li>
+          <li>R2,000 Cash Back (main)</li>
+          <li>R500 Cash Back (deps)</li>
+          <li>Storage & Delivery</li>
+          <li>Grave Service</li>
+        </ul>
+        <a href="#contact" class="package-btn">Enquire</a>
+      </div>
+
+      <div class="package-card featured">
+        <div class="package-note" style="color:rgba(255,255,255,0.7);">Gold Package</div>
+        <div class="package-name">Both Parents + 6 Kids</div>
+        <span class="package-price">R125/mo</span>
+        <ul class="package-features">
+          <li>Repatriation</li>
+          <li>2 Poles Tent</li>
+          <li>100 Chairs</li>
+          <li>Open Face Casket</li>
+          <li>R2,000 Cash Back (main)</li>
+          <li>R1,500 Cash Back (deps)</li>
+          <li>Storage & Delivery</li>
+          <li>Grave Service</li>
+        </ul>
+        <a href="#contact" class="package-btn">Enquire</a>
+      </div>
+
+      <div class="package-card">
+        <div class="package-note">Inceba 1+5</div>
+        <div class="package-name">No Age Limit</div>
+        <span class="package-price">R150/mo</span>
+        <ul class="package-features">
+          <li>Repatriation</li>
+          <li>2 Poles Tent</li>
+          <li>100 Chairs</li>
+          <li>Open Face Casket</li>
+          <li>R2,000 Cash Back (main)</li>
+          <li>R1,500 Cash Back (deps)</li>
+          <li>100 Programmes</li>
+          <li>Grave Service</li>
+        </ul>
+        <a href="#contact" class="package-btn">Enquire</a>
+      </div>
+
+      <div class="package-card">
+        <div class="package-note">Inceba 1+9</div>
+        <div class="package-name">No Age Limit</div>
+        <span class="package-price">R195/mo</span>
+        <ul class="package-features">
+          <li>Repatriation</li>
+          <li>2 Poles Tent</li>
+          <li>100 Chairs</li>
+          <li>R2,000 Cash Back (main)</li>
+          <li>R1,500 Cash Back (deps)</li>
+          <li>Storage & Delivery</li>
+          <li>100 Programmes</li>
+          <li>Grave Service</li>
+        </ul>
+        <a href="#contact" class="package-btn">Enquire</a>
+      </div>
+
+      <div class="package-card">
+        <div class="package-note">Inceba 1+14</div>
+        <div class="package-name">No Age Limit</div>
+        <span class="package-price">R275/mo</span>
+        <ul class="package-features">
+          <li>Repatriation</li>
+          <li>3 Poles Tent</li>
+          <li>150 Chairs</li>
+          <li>Half View Casket</li>
+          <li>R2,000 Cash Back</li>
+          <li>Storage & Delivery</li>
+          <li>Sound System</li>
+          <li>Fresh Flowers & Iqonga</li>
+          <li>Audio Obituary</li>
+        </ul>
+        <a href="#contact" class="package-btn">Enquire</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="branches" id="branches">
+  <div class="branches-inner">
+    <div class="branches-header">
+      <span class="section-tag">Our Locations</span>
+      <h2>Branch Managers</h2>
+      <p style="color:var(--muted);font-size:15px;margin-top:0.5rem;">We have branches across KwaZulu-Natal and the Eastern Cape to serve you.</p>
+    </div>
+    <div class="branches-grid">
+      <div class="branch-card">
+        <div class="branch-name">Zukiswa Tshazi</div>
+        <div class="branch-location">Umzimkhulu</div>
+        <div class="branch-phone">082 072 1561</div>
+      </div>
+      <div class="branch-card">
+        <div class="branch-name">Fanele Ntuli</div>
+        <div class="branch-location">Ixopo</div>
+        <div class="branch-phone">073 967 1744</div>
+      </div>
+      <div class="branch-card">
+        <div class="branch-name">Nkanyie</div>
+        <div class="branch-location">Harding</div>
+        <div class="branch-phone">071 712 1992</div>
+      </div>
+      <div class="branch-card">
+        <div class="branch-name">Duka</div>
+        <div class="branch-location">Kokstad</div>
+        <div class="branch-phone">073 120 2639</div>
+      </div>
+      <div class="branch-card">
+        <div class="branch-name">Maduna</div>
+        <div class="branch-location">Umtata</div>
+        <div class="branch-phone">076 530 5372</div>
+      </div>
+      <div class="branch-card">
+        <div class="branch-name">Madlamini</div>
+        <div class="branch-location">Ngqeleni</div>
+        <div class="branch-phone">064 994 3385</div>
+      </div>
+      <div class="branch-card">
+        <div class="branch-name">Elliot</div>
+        <div class="branch-location">Elliot</div>
+        <div class="branch-phone">078 107 0486</div>
+      </div>
+      <div class="branch-card">
+        <div class="branch-name">Sanele</div>
+        <div class="branch-location">Cala</div>
+        <div class="branch-phone">072 397 5018</div>
+      </div>
+      <div class="branch-card">
+        <div class="branch-name">Khango</div>
+        <div class="branch-location">Cala</div>
+        <div class="branch-phone">071 836 7726</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <span class="section-tag">Get in Touch</span>
+      <h2>We Are Here for You</h2>
+      <p>Our team is available to assist you at any time. Reach out to our main office or contact your nearest branch manager directly.</p>
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="contact-detail-label">Office Numbers</div>
+          <div class="contact-detail-value">039 259 0877 / 039 433 1179</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="contact-detail-label">Director — Lusindiso Mhlwatika</div>
+          <div class="contact-detail-value">082 222 4499 / 082 459 9775 / 083 667 2224</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="contact-detail-label">Email</div>
+          <div class="contact-detail-value">maxwell@incebafp.co.za</div>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="return false;">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your full name">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+27 00 000 0000">
+      </div>
+      <div class="form-group">
+        <label>Nearest Branch</label>
+        <select>
+          <option value="">Select your area</option>
+          <option>Umzimkhulu</option>
+          <option>Ixopo</option>
+          <option>Harding</option>
+          <option>Kokstad</option>
+          <option>Umtata</option>
+          <option>Ngqeleni</option>
+          <option>Elliot</option>
+          <option>Cala</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Enquiry Type</label>
+        <select>
+          <option value="">Select one</option>
+          <option>Funeral Cover — New Policy</option>
+          <option>Existing Policy Query</option>
+          <option>Repatriation Service</option>
+          <option>Funeral Arrangement</option>
+          <option>Décor Services</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="How can we help you?"></textarea>
+      </div>
+      <button class="form-submit">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Inceba <span>Funeral Palour</span></div>
+      <div class="footer-reg">Reg No: 2011/026197/23</div>
+      <div class="footer-tagline">"Phakathi kokudliwa kobomi sikwasekufeni"</div>
+    </div>
+    <div style="color:rgba(255,255,255,0.3);font-size:13px;line-height:2;">
+      <div>039 259 0877 / 039 433 1179</div>
+      <div>maxwell@incebafp.co.za</div>
+      <div>www.incebafp.co.za</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Inceba Funeral Palour. All rights reserved.</p>
+    <p>KwaZulu-Natal & Eastern Cape, South Africa</p>
+  </div>
+</footer>
+
+<div class="built-by">
+  <div class="built-by-brand">
+    <span class="built-by-name">Siyio Labs</span>
+    <span class="built-by-title">Web Designer</span>
+  </div>
+  <div class="built-by-contacts">
+    <div class="built-by-item">
+      <span class="built-by-label">Email</span>
+      <span class="built-by-value">siyiolabs@outlook.com</span>
+    </div>
+    <div class="built-by-item">
+      <span class="built-by-label">WhatsApp</span>
+      <span class="built-by-value">+27 84 084 9230</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
